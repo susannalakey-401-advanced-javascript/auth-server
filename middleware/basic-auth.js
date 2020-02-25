@@ -22,6 +22,7 @@ function basicAuth(req, res, next) {
   // now that we know the username and password, ask if the user is ok
   users.authenticateBasic(username, password)
     .then(() => {
+      // send token?
       next()
     })
     .catch(err => {

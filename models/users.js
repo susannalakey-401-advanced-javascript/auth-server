@@ -17,6 +17,8 @@ usersSchema.statics.authenticateBasic = (username, password) => {
   // do some kind of findOne query with mongoose to get the right user
 }
 
+// write a save method
+
 module.exports = mongoose.model('User', usersSchema)
 
 /*

@@ -2,10 +2,10 @@
   "name": "auth-server",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest --coverage --verbose",
-    "dev": "nodemon app.js"
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +24,8 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.2"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
