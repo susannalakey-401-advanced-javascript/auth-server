@@ -5,7 +5,7 @@
 
 
 ### Links and Resources
-* [submission PR](https://github.com/susannalakey-401-advanced-javascript/simple-api/pull/2)
+* [submission PR](https://github.com/susannalakey-401-advanced-javascript/auth-server/pull/1)
 
 
 #### Documentation

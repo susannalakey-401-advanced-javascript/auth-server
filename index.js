@@ -4,12 +4,13 @@ const mongoose = require('mongoose');
 const mongooseOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true,
+  useCreateIndex: true,  // fixed an issue that was crashing the server
 };
 
-// a nice way of destructuring 
 const { MONGODB_URI, PORT } = process.env;
 
+
+// used an immediately executing function to allow for a try/catch 
 (async () => {
   try {
     await mongoose.connect(MONGODB_URI, mongooseOptions);
