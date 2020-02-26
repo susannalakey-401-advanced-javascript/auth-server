@@ -2,14 +2,12 @@ const express = require('express');
 const basicAuth = require('../middleware/basic-auth')
 
 const Users = require('../models/users');
-const users = new Users();
-
-
-const { listAll, listOne, updateItems, createItems, deleteItems } = require('./generalRouter');
 const router = express.Router();
 
+
+
 router.post('/signup', async (req, res) => {
-  const newUser = new User(req.body)
+  const newUser = new Users(req.body)
   newUser.save() // write a save() function in your User model
     .then(user => {
       const token = user.generateToken()
@@ -23,7 +21,10 @@ router.post('/signin', basicAuth, (req, res) => {
   res.json({ message: 'success' })
 })
 
-router.get('/users', listAll(users));
+router.get('/users', (req, res) => {
+  const users = new Users();
+  users.list();
+})
 
 
 
