@@ -3,13 +3,8 @@
 ### Author: Susanna Lakey
 
 
-
 ### Links and Resources
 * [submission PR](https://github.com/susannalakey-401-advanced-javascript/auth-server/pull/1)
-
-
-#### Documentation
-
 
 ### Setup
 * `npm install base-64 express bcrypt dotenv jsonwebtoken mongoose`
