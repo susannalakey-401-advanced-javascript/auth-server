@@ -23,8 +23,23 @@ describe('the server', () => {
     })
   })
 
-
   describe('routes', () => {
+    it('can list all entries in the database', () => {
+
+    })
+
+    it('adds a new user to the database when making a POST request to /signup', () => {
+
+    })
+
+    it('denies a user signup if they are already in the databse', () => {
+
+    })
+
+    it('allows a user to signin if they are already in the databse', () => {
+
+    })
+
 
   })
 

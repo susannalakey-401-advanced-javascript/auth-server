@@ -1,13 +1,9 @@
 const base64 = require('base-64')
-const Users = require('../models/users')
+const User = require('../models/user')
 // const users = new Users();
 
 
-
-
-
 function basicAuth(req, res, next) {
-  // check if we have an authorization header
   if (!req.headers.authorization) {
     next(new Error('No Authorization Header Found'));
   }
@@ -20,16 +16,19 @@ function basicAuth(req, res, next) {
   const [username, password] = decoded.split(':'); // split on ':' 
 
 
-  Users.authenticateBasic(username, password)
-    .then(_validate)
+  User.authenticateBasic(username, password)
+    .then(user => _validate(user))
+    .catch(err => {
+      next(err);
+    })
 
-  function _validate(username) {
-    if (username) {
-      req.user = username;
-      req.token = username.generateToken()
-      next()
+  function _validate(user) {
+    if (user) {
+      req.user = user;
+      req.token = user.generateToken();
+      next();
     } else {
-      next(new Error('SOmething broke'))
+      next(new Error('Something broke'))
     }
   }
 }

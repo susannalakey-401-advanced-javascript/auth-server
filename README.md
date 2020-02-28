@@ -26,4 +26,5 @@
 
 #### UML
 ![Lab 12 UML](assets/lab-12-UML.jpg)
+![Lab 14 UML](assets/lab-14-UML.jpg)
 
