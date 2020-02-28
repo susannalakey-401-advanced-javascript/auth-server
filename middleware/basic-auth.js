@@ -8,7 +8,6 @@ function basicAuth(req, res, next) {
     next(new Error('No Authorization Header Found'));
   }
 
-
   // split gives you ["basic", "awefewaf"]
   // pop gives you "awefewaf"
   const basic = req.headers.authorization.split(' ').pop()

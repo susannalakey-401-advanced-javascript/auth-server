@@ -12,7 +12,7 @@ router.post('/signup', (req, res, next) => {
   newUser.save()
     .then(user => {
       const token = user.generateToken()
-      res.status(200).json({ token })
+      res.status(201).json({ token })
     })
     .catch(next)
 })
