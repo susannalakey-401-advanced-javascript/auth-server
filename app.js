@@ -5,6 +5,10 @@ const cors = require('cors')
 const morgan = require('morgan');
 const app = express()
 
+// update paths
+const productsRouter = require('./routes/productsRouter.js');
+const categoriesRouter = require('./routes/categoriesRouter.js');
+
 // App-level middleware
 app.use(express.json())
 app.use(morgan('dev'));
@@ -15,6 +19,8 @@ const usersRouter = require('./routes/usersRouter')
 app.use(usersRouter)
 const rolesRouter = require('./routes/rolesRouter');
 app.use(rolesRouter);
+app.use(productsRouter);
+app.use(categoriesRouter);
 
 // Catch-Alls
 const notFound = require('./middleware/notFound');

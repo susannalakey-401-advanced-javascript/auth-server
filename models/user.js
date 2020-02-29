@@ -9,8 +9,6 @@ const SECRET = process.env.SECRET || 'othersecret';
 const usersSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, require: true },
-  // email: { type: String },
-  // token: { type: String },
   role: { type: mongoose.Schema.Types.ObjectID, ref: 'Role', autopopulate: true }
 })
 
