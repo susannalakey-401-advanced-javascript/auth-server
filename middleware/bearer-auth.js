@@ -9,7 +9,7 @@ function bearerAuth(req, res, next) {
     User.authenticateToken(token)
       .then(validUser => {
         req.user = validUser;
-        req.token = user.generateToken();
+        req.token = validUser.generateToken();
         next()
       })
       .catch(err => {
