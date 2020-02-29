@@ -10,7 +10,7 @@ describe('the server', () => {
 
   describe('error handlers', () => {
 
-    it('handles a 404 error', () => {
+    it('handles a 404 error', async () => {
       return mockRequest
         .get('/fakeroute')
         .then(results => {

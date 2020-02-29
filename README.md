@@ -7,7 +7,7 @@
 * [submission PR](https://github.com/susannalakey-401-advanced-javascript/auth-server/pull/1)
 
 ### Setup
-* `npm install base-64 express bcrypt dotenv jsonwebtoken mongoose`
+* `npm install base-64 express bcrypt dotenv jsonwebtoken mongoose mongoose-autopopulate`
 
 #### How to initialize/run your server app (where applicable)
 * `npm run dev`

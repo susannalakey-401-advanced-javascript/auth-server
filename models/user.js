@@ -9,10 +9,12 @@ const SECRET = process.env.SECRET || 'othersecret';
 const usersSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, require: true },
-  email: { type: String },
-  token: { type: String },
-  role: { type: String, required: true, default: 'user', enum: ['admin', 'user'] }
+  // email: { type: String },
+  // token: { type: String },
+  role: { type: mongoose.Schema.Types.ObjectID, ref: 'Role', autopopulate: true }
 })
+
+usersSchema.plugin(require('mongoose-autopopulate'))
 
 usersSchema.pre('save', async function () {
   if (this.isModified('password')) {
@@ -22,15 +24,19 @@ usersSchema.pre('save', async function () {
 
 // never put password in the token
 usersSchema.methods.generateToken = function () {
-  // jwt.sign(token data, secret);
-  // const expiresIn = 300;
+  const tokenData = {
+    id: this._id,
+    username: this.username,
+    // email: this.email,
+    permissions: this.role.permissions || [],
+  }
   const expiresIn = 60 * 15;
 
-  return jwt.sign({ username: this.username, email: this.email }, SECRET, { expiresIn })
+  return jwt.sign(tokenData, SECRET, { expiresIn })
 }
 
 usersSchema.statics.authenticateBasic = function (username, password) {
-  return this.findOne({ username })
+  return this.findOne({ username }).populate('role') // sticks roles object into the query
     .then(user => user && user.comparePassword(password));
 }
 
