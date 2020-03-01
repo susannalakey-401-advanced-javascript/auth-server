@@ -1,9 +1,7 @@
 const supergoose = require('@code-fellows/supergoose');
 const { server } = require('../app');
 
-
-
-describe('basic-auth', () => {
+describe('bearer-auth', () => {
 
   let mockRequest;
 
@@ -28,7 +26,7 @@ describe('basic-auth', () => {
       });
   })
 
-  it('authorizes a user for signin with valid credentials', async () => {
+  it('authenticates a users token', async () => {
 
     const newSignup = {
       username: 'donald',
@@ -45,4 +43,3 @@ describe('basic-auth', () => {
         expect(results.status).toBe(200);
       });
   })
-})

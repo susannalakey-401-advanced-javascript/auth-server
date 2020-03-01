@@ -33,10 +33,9 @@ router.get('/', (req, res) => {
 })
 
 
-
 router.get('/secret', bearerAuth, acl('read'), (req, res, next) => {
-  // horses.push(req.body) 
-  // res.json(req.body)
+  const { username } = req.user;
+  res.status(200).json({ username });
 })
 
 
@@ -45,6 +44,23 @@ router.post('/secret', bearerAuth, acl('create'), (req, res, next) => {
   res.status(200).json({ username });
 })
 
+// //update
+// router.put('/secret', bearerAuth, acl('update'), (req, res, next) => {
+//   const { username } = req.user;
+//   res.status(200).json({ username });
+// })
+
+// //update
+// router.patch('/secret', bearerAuth, acl('update'), (req, res, next) => {
+//   const { username } = req.user;
+//   res.status(200).json({ username });
+// })
+
+// // delete
+// router.delete('/secret', bearerAuth, acl('delete'), (req, res, next) => {
+//   const { username } = req.user;
+//   res.status(204).json({ username });
+// })
 
 
 
