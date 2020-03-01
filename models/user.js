@@ -20,13 +20,15 @@ usersSchema.pre('save', async function () {
   }
 })
 
+// const variable = foo && foo.bar;
+
 // never put password in the token
 usersSchema.methods.generateToken = function () {
   const tokenData = {
     id: this._id,
     username: this.username,
     // email: this.email,
-    permissions: this.role.permissions || [],
+    permissions: (this.role && this.role.permissions) || [],
   }
   const expiresIn = 60 * 15;
 

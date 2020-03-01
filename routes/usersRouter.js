@@ -33,7 +33,6 @@ router.get('/', (req, res) => {
 })
 
 
-
 router.get('/secret', bearerAuth, acl('read'), (req, res, next) => {
   const { username } = req.user;
   res.status(200).json({ username });
