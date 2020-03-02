@@ -43,3 +43,4 @@ describe('bearer-auth', () => {
         expect(results.status).toBe(200);
       });
   })
+})
